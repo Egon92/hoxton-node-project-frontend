@@ -1,0 +1,8 @@
+main.profile-big-wrapper {
+    height: 100vh;
+    width: 100%;
+
+    display: grid;
+    grid-template-rows: 60px 0.2fr 0.8fr 60px;
+    grid-gap: 45px;
+}

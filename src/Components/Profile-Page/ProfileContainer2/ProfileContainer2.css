@@ -1,0 +1,19 @@
+section.profileContainer2-wrapper {
+    height: auto;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 0.333fr);
+    grid-gap: 35px;
+    place-items: center;
+}
+
+section.profileContainer2-wrapper .photo-item {
+    display: grid;
+    place-items: center;
+}
+
+section.profileContainer2-wrapper img {
+    height: 250px;
+    width: 250px;
+}

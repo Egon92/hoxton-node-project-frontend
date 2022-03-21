@@ -1,0 +1,71 @@
+section.profileContainer1-wrapper {
+    height: 200px;
+    width: 100%;
+
+    display: grid;
+    grid-template: 
+    "profile-image profile-nav" 0.2fr
+    "profile-image profile-stats" 0.2fr
+    "profile-image profile-bio" 0.6fr /
+    0.4fr 0.6fr;
+    grid-gap: 35px;
+}
+
+section.profileContainer1-wrapper .profile-nav {
+    grid-area: profile-nav;
+    display: grid;
+    grid-template-columns: 0.7fr 0.3fr;
+    place-items: center;
+}
+
+section.profileContainer1-wrapper .profile-nav  span {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+section.profileContainer1-wrapper .profile-nav  button {
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    padding: 10px 10px;
+    background-color: rgb(236, 85, 85);
+}
+
+section.profileContainer1-wrapper .profile-bio {
+    grid-area: profile-bio;
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+}
+
+section.profileContainer1-wrapper .profile-bio p {
+    font-size: 16px;
+    width: 65ch;
+}
+
+section.profileContainer1-wrapper .profile-stats {
+    grid-area: profile-stats;
+    display: grid;
+    grid-template-columns: repeat(3, 0.33fr);
+    grid-gap: 35px;
+    place-items: center;
+}
+section.profileContainer1-wrapper .profile-stats span {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+section.profileContainer1-wrapper .profile-image-wrapper {
+    grid-area: profile-image;
+    display: grid;
+    place-items: center;
+}
+
+section.profileContainer1-wrapper .profile-image-wrapper img {
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}

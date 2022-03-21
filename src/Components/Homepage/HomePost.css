@@ -1,21 +1,3 @@
-main.main-home-wrapper {
-    height: auto;
-    width: 100%;
-
-    display: grid;
-    grid-template-rows: 60px 0.9fr 60px;
-    grid-gap: 50px;
-}
-
-main.main-home-wrapper .photos {
-    display: grid;
-    grid-template-rows: 1fr;
-    place-items: center;
-    grid-gap: 50px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-} 
-
 main.main-home-wrapper .photos .photo-wrapper {
     display: grid;
     grid-template-rows: 40px 550px 50px 100px;
