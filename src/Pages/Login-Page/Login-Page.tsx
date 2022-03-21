@@ -16,10 +16,10 @@ function Login() {
         <form id="login-form">
           <h1>SocialLounge</h1>
           <label htmlFor="">
-            <input type="text" placeholder="Enter your email" />
+            <input type="text" placeholder="Enter your email" required />
           </label>
           <label htmlFor="">
-            <input type="text" placeholder="Enter your password" />
+            <input type="text" placeholder="Enter your password" required />
           </label>
           <label htmlFor="">
             <button>Log In</button>
