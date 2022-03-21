@@ -1,13 +1,43 @@
 import FooterCommon from "../../Components/Common/FooterCommon/FooterCommon";
 import HeaderCommon from "../../Components/Common/HeaderCommon/HeaderCommon";
 import "./Homepage.css";
-//@ts-ignore
-import Heart from "react-heart"
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import HomePost from "../../Components/Homepage/HomePost";
 
 function Homepage() {
   
-  const [isClick, setClick] = useState(false);
+  const [photos, setPhotos] = useState([])
+  const [avatars, setAvatars] = useState([])
+  const [users, setUsers] = useState([])
+
+  function getAvatarsFromServer () {
+
+    fetch(`http://localhost:4000/avatars`)
+      .then(resp => resp.json())
+      .then(avatarsFromServer => setAvatars(avatarsFromServer))
+      
+  }
+
+  function getUsersFromServer () {
+
+    fetch(`http://localhost:4000/users`)
+      .then(resp => resp.json())
+      .then(usersFromServer => setUsers(usersFromServer))
+      
+  }
+
+  function getPhotosFromServer () {
+
+    fetch(`http://localhost:4000/photos`)
+      .then(resp => resp.json())
+      .then(photosFromServer => setPhotos(photosFromServer))
+      
+  }
+
+  useEffect(getPhotosFromServer, [])
+  useEffect(getUsersFromServer, [])
+  useEffect(getAvatarsFromServer, [])
 
   return (
 
@@ -17,71 +47,22 @@ function Homepage() {
 
       <div className="photos">
 
-        <div className="photo-wrapper">
+        {
 
-          <div className="home-photo-nav">
-            <img src="/assets/icons/avatar.jpg" />
-            <span>JurgenHasmeta</span>
-          </div>
-
-          <div className="photo-large">
-            <img src="/assets/icons/leva.jpg" />
-          </div>
-
-          <div className="photo-buttons">
-
-            <div className="button-group">
-              <Heart isActive={isClick} onClick={() => setClick(!isClick)} style = {{height: '30px'}} />
-              <i className="fas fa-comment"></i>
-              <span>30505 Likes</span>
-            </div>
-
-          </div>
-
-          <div className="photo-comments">
-
-            <span>Jurgenhasmeta</span>
+          photos.map(photo =>
             
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, explicabo.
-            </p>
+            <HomePost 
+              //@ts-ignore
+              key = {photo.id}
+              //@ts-ignore
+              photo = {photo}
+              avatars = {avatars}
+              users = {users}
+            />
 
-          </div>
+          )
 
-        </div>
-
-        <div className="photo-wrapper">
-
-          <div className="home-photo-nav">
-            <img src="/assets/icons/avatar.jpg" />
-            <span>JurgenHasmeta</span>
-          </div>
-
-          <div className="photo-large">
-            <img src="/assets/icons/leva.jpg" />
-          </div>
-
-          <div className="photo-buttons">
-
-            <div className="button-group">
-              <Heart isActive={isClick} onClick={() => setClick(!isClick)} style = {{height: '30px'}} />
-              <i className="fas fa-comment"></i>
-              <span>30505 Likes</span>
-            </div>
-
-          </div>
-
-          <div className="photo-comments">
-
-            <span>Jurgenhasmeta</span>
-            
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, explicabo.
-            </p>
-
-          </div>
-
-        </div>
+        }
 
       </div>
 

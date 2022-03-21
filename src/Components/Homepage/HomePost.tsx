@@ -1,13 +1,36 @@
-import FooterCommon from "../Common/FooterCommon/FooterCommon";
-import HeaderCommon from "../Common/HeaderCommon/HeaderCommon";
 import "./HomePost.css"
 //@ts-ignore
 import Heart from "react-heart"
 import { useState } from "react";
 
-function HomePost() {
+function HomePost({photo, avatars, users}:any) {
   
   const [isClick, setClick] = useState(false);
+  
+  // let photoCommentsId = []
+
+  // for (const comment of photo.comments) {
+  //   photoCommentsId.push(comment.id)
+  // }
+
+  // for (const user of users) {
+
+  // }
+
+  //@ts-ignore
+  const findAvatar = avatars.find(avatar => avatar.userId === photo.userWhoCreatedIt.id)
+
+  //@ts-ignore
+  // const findCommentsOfPhoto = photo.comments.filter(comment => comment.photoId === photo.id )
+  
+  // let userId = []
+
+  // for (const comment of photo.comments) {
+  //   userId.push(comment.userId)
+  // }
+
+  //@ts-ignore
+  // const findUserWhoCommented = users.find(user => filter(photo.comments.filter(comment => comment.userId === user.id)))
 
   return (
   
@@ -16,31 +39,43 @@ function HomePost() {
       <div className="photo-wrapper">
 
         <div className="home-photo-nav">
-          <img src="/assets/icons/avatar.jpg" />
-          <span>JurgenHasmeta</span>
+          <img src={findAvatar.src} />
+          <span>{photo.userWhoCreatedIt.userName}</span>
         </div>
 
         <div className="photo-large">
-          <img src="/assets/icons/leva.jpg" />
+          <img src={photo.src} />
         </div>
 
         <div className="photo-buttons">
 
           <div className="button-group">
-            <Heart isActive={isClick} onClick={() => setClick(!isClick)} />
+            <Heart isActive={isClick} onClick={() => setClick(!isClick)} style = {{height:'26px'}} />
           </div>
 
-          <span>30505 Likes</span>
+          <span>{photo.countLikesInside} Likes</span>
 
         </div>
 
         <div className="photo-comments">
 
-          <span>Jurgenhasmeta</span>
+          <span>{photo.userWhoCreatedIt.userName}</span>
           
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, explicabo.
+            {photo.caption}
           </p>
+
+          {
+
+            //@ts-ignore
+            photo.comments.map(comment => 
+              <>
+                {/* <span>{findUserWhoCommented.userName}</span> */}
+                <span>{comment.content}</span>
+              </>
+            )
+
+          }
 
         </div>
 
