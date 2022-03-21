@@ -3,7 +3,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useRoutes,
 } from "react-router-dom";
 import "./App.css";
 import Error404 from "./Pages/Error/Error";
