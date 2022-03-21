@@ -1,0 +1,9 @@
+section.profileContainer2-wrapper .photo-item {
+    display: grid;
+    place-items: center;
+}
+
+section.profileContainer2-wrapper img {
+    height: 250px;
+    width: 250px;
+}

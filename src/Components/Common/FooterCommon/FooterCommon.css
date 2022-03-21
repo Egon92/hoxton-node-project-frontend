@@ -1,0 +1,14 @@
+footer.footer {
+    height: 60px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0.8fr 0.2fr;
+    grid-gap: 20px;
+
+    background-color: rgb(246, 129, 129);
+}
+
+footer.footer span {
+    font-size: 16px;
+    font-weight: 700;
+}
