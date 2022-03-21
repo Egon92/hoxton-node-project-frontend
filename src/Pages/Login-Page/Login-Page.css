@@ -9,7 +9,7 @@
 .left-main-wrapper {
   display: grid;
   place-content: center;
-  width: 1fr;
+  width: 100%;
 }
 #login-page-img {
   display: grid;
@@ -74,7 +74,7 @@
 #signup-link-wrapper {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  font-weight: 13px;
+  font-weight: 700;
   place-content: center;
   gap: 1rem;
   font-weight: 800;

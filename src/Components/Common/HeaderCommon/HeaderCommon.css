@@ -1,10 +1,12 @@
 header.header-container {
-    height: 60px;
+    height: 80px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 0.33fr);
     grid-gap: 50px;
     background-color: #ffffff;
+
+    border-bottom: 2px solid #000;
 }
 
 header.header-container ul.header-logo-container {

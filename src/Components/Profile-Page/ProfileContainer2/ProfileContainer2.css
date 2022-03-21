@@ -4,8 +4,10 @@ section.profileContainer2-wrapper {
 
     display: grid;
     grid-template-columns: repeat(3, 0.333fr);
-    grid-gap: 35px;
+    grid-gap: 50px 10px;
     place-items: center;
+
+    padding-top: 50px;
 }
 
 section.profileContainer2-wrapper .photo-item {
@@ -14,6 +16,6 @@ section.profileContainer2-wrapper .photo-item {
 }
 
 section.profileContainer2-wrapper img {
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
 }

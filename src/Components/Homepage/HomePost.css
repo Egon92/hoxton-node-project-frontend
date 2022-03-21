@@ -2,6 +2,7 @@ main.main-home-wrapper .photos .photo-wrapper {
     display: grid;
     grid-template-rows: 40px 550px 50px 100px;
     grid-gap: 30px;
+    outline: 2px solid rgb(19, 19, 19) !important;
 }
 
 main.main-home-wrapper .photos .photo-wrapper .photo-nav {

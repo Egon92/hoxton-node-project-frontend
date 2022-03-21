@@ -9,7 +9,7 @@
 .left-main-wrapper {
   display: grid;
   place-content: center;
-  width: 1fr;
+  width: 122%;
 }
 #signup-page-img {
   display: grid;
@@ -109,7 +109,7 @@
 }
 #birthday-wrapper input {
   display: grid;
-  grid-template-columns: repeat (5, auto);
+  grid-template-columns: repeat(5, auto);
   font-size: 15px;
   justify-content: center;
 }
@@ -145,7 +145,7 @@
 #login-link-wrapper {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  font-weight: 13px;
+  font-weight: 600;
   place-content: center;
   gap: 1rem;
   font-weight: 800;
