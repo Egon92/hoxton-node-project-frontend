@@ -3,8 +3,8 @@ import HeaderCommon from "../../Components/Common/HeaderCommon/HeaderCommon";
 import FooterCommon from "../../Components/Common/FooterCommon/FooterCommon";
 import ProfileContainer1 from "../../Components/Profile-Page/ProfileContainer1/ProfileContainer1";
 import ProfileContainer2 from "../../Components/Profile-Page/ProfileContainer2/ProfileContainer2";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Profile({user, setUser, validateUser}:any) {
   
@@ -12,6 +12,33 @@ function Profile({user, setUser, validateUser}:any) {
     validateUser()
   }, [])
   
+
+  const params = useParams()
+
+  const [userItem, setUserItem]:any = useState(null)
+
+  function getIndividualUserFromServer () {
+
+      fetch(`http://localhost:4000/users/${params.id}`)
+        .then(resp => resp.json())
+        .then(userFromServer => setUserItem(userFromServer))
+      
+  }
+  
+  useEffect(getIndividualUserFromServer, [])
+
+  if (userItem === null) {
+      return <main>Loading...</main>
+  }
+
+  if (userItem.userName === undefined) {
+      return <main>Blog Article not found</main>
+  }
+
+  if(user === null) {
+    return <main>Loading...</main>
+  }
+
   console.log(user)
 
   // const navigate = useNavigate()
@@ -29,8 +56,8 @@ function Profile({user, setUser, validateUser}:any) {
         setUser = {setUser}
       />
       
-      <ProfileContainer1 user = {user} setUser = {setUser} validateUser = {validateUser} />
-      <ProfileContainer2 user = {user} setUser = {setUser} validateUser = {validateUser} />
+      <ProfileContainer1 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} />
+      <ProfileContainer2 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} />
       
       <FooterCommon />
 

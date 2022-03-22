@@ -65,6 +65,8 @@ section.profileContainer1-wrapper .profile-image-wrapper {
 }
 
 section.profileContainer1-wrapper .profile-image-wrapper img {
+    height: 150px;
+    width: 150px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
