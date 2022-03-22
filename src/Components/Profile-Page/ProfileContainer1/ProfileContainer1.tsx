@@ -1,7 +1,21 @@
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import "../ProfileContainer1/ProfileContainer1.css"
 
-export default function ProfileContainer1() {
+export default function ProfileContainer1({user, setUser, validateUser}:any) {
 
+    // useEffect(() => {
+    //     validateUser()
+    // }, [])
+      
+    // const navigate = useNavigate()
+    
+    // if(user === null) {
+    //     navigate('/login')
+    // }
+
+    console.log(user)
+    
     return (
 
         <>
@@ -9,25 +23,24 @@ export default function ProfileContainer1() {
             <section className="profileContainer1-wrapper">
 
                 <div className="profile-image-wrapper">
-                    <img src="/assets/icons/logo.jpg" />
+                    <img src={user.avatar[0].src} />
                 </div>
 
                 <div className="profile-nav">
-                    <span>Hoxton.academy</span>
+                    <span>{user.userName}</span>
                     <button>Follow</button>
                 </div>
 
                 <div className="profile-stats">
-                    <span><strong>18</strong> Posts</span>
-                    <span><strong>250</strong> Followers</span>
-                    <span><strong>213</strong> Following</span>
+                    <span><strong>{user.countPhotosCreated}</strong> Posts</span>
+                    <span><strong>{user.countFollowers}</strong> Followers</span>
+                    <span><strong>{user.countFollowing}</strong> Following</span>
                 </div>
 
                 <div className="profile-bio">
                     <p>
-                        Hoxton Academy
-                        Computer Training School
-                        London-based online education company that enables Albanian individuals to start their career in tech as Jr Full-stack Engineers in just 6 months.
+                        {user.fullName}
+                        {user.description}
                     </p>
                 </div>
 

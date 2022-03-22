@@ -1,8 +1,9 @@
 main.main-home-wrapper .photos .photo-wrapper {
     display: grid;
-    grid-template-rows: 40px 550px 50px 100px;
+    grid-template-rows: 40px 550px 50px auto;
     grid-gap: 30px;
     outline: 2px solid rgb(19, 19, 19) !important;
+    height: auto;
 }
 
 main.main-home-wrapper .photos .photo-wrapper .photo-nav {
@@ -12,8 +13,8 @@ main.main-home-wrapper .photos .photo-wrapper .photo-nav {
 }
 
 main.main-home-wrapper .photos .photo-wrapper .home-photo-nav img {
-    height: 24px;
-    width: 24px;
+    height: 34px;
+    width: 34px;
 }
 
 main.main-home-wrapper .photos .photo-wrapper .home-photo-nav {
@@ -38,14 +39,63 @@ main.main-home-wrapper .photos .photo-buttons .button-group {
     place-items: center;
 }
 
+hr {
+    padding-left: 30px;
+    width: 125%;
+    font-size: 3px;
+}
+
 main.main-home-wrapper .photos .photo-buttons .button-group i {
     font-size: 30px;
 }
 
 main.main-home-wrapper .photos .photo-comments {
     display: grid;
-    grid-template-columns: 150px 350px;
-    place-items: center;
+    grid-template: 
+    "userCreated caption" 0.2fr
+    "viewAll viewAll" 0.2fr
+    "li li" 0.6fr /
+    0.3fr 0.7fr;
     border: none;
     outline: none;
+    grid-gap: 30px;
+}
+
+.photo-comments li {
+    grid-area: li;
+    display: grid;
+    grid-template-columns: 0.1fr 0.9fr;
+    grid-gap: 30px;
+    display: grid;
+    place-items: center;
+    padding-left: 40px;
+}
+
+.photo-comments .viewAll {
+    grid-area: viewAll;
+    color: rgb(71, 71, 209);
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+}
+
+.photo-comments .userCreated {
+    grid-area: userCreated;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+.likes {
+    color: rgb(49, 49, 209);
+}
+
+.photo-comments p {
+    grid-area: caption;
+    display: grid;
+    place-items: center;
 }
