@@ -1,0 +1,80 @@
+#homesearch-modal-wrapper {
+  display: grid;
+  align-content: start;
+  justify-content: center;
+  position: fixed;
+  top: 60px;
+  left: 475px;
+  height: 400px;
+  width: 300px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.507);
+  border-radius: 5px;
+  border-style: none;
+  background-color: white;
+}
+#top-modal {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  place-content: space-between;
+  align-content: center;
+  width: 300px;
+  height: 50px;
+  padding: 1rem;
+}
+#recent-wrapper span,
+#clear-all-wrapper span {
+  font-weight: 650;
+}
+#recent-wrapper:hover,
+#clear-all-wrapper:hover {
+  cursor: pointer;
+}
+#bottom-modal {
+  display: grid;
+  overflow: scroll;
+}
+.profile-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  place-content: space-between;
+  padding: 10px;
+}
+.profile-pic-wrapper {
+  display: grid;
+  place-content: center;
+  width: 45px;
+  border-radius: 40px;
+}
+.profile-pic {
+  display: grid;
+  width: 100%;
+  border-radius: 100%;
+}
+.name-username-wrapper {
+  display: grid;
+  text-align: start;
+  width: 170px;
+  padding-left: 5px;
+}
+.name {
+  font-weight: 650;
+}
+.x-wrapper {
+  display: grid;
+  width: 40px;
+  place-content: center;
+}
+.x-icon {
+  display: grid;
+  place-content: center;
+  width: 26px;
+}
+.x-wrapper:hover {
+  background-color: rgba(128, 128, 128, 0.514);
+  transition: 0.3s;
+}
+.profile-pic :hover,
+.name-username-wrapper:hover,
+.x-wrapper:hover {
+  cursor: pointer;
+}
