@@ -6,8 +6,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import FollowerModal from "./Modals/FollowerModal/FolloweModal";
-import FollowingModal from "./Modals/FollowingModal/FollowingModal";
 import Error404 from "./Pages/Error/Error";
 import Homepage from "./Pages/Homepage/Homepage";
 import Login from "./Pages/Login-Page/Login-Page";
@@ -92,7 +90,6 @@ function App() {
             />
           }
         />
-        <Route path="/following" element={<FollowingModal />} />
       </Routes>
     </div>
   );
