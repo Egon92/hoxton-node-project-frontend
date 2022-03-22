@@ -2,7 +2,7 @@ import FooterCommon from "../../Components/Common/FooterCommon/FooterCommon";
 import HeaderCommon from "../../Components/Common/HeaderCommon/HeaderCommon";
 import "./Error.css";
 
-function Error404() {
+function Error404({user, setUser, validateUser}:any) {
   
   return (
 

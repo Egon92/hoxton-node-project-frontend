@@ -5,27 +5,18 @@ import "./Homepage.css";
 import { useEffect, useState } from "react";
 import HomePost from "../../Components/Homepage/HomePost";
 
-function Homepage() {
+function Homepage({user, setUser, validateUser}:any) {
   
   const [photos, setPhotos] = useState([])
-  const [avatars, setAvatars] = useState([])
-  const [users, setUsers] = useState([])
+  // const [users, setUsers] = useState([])
 
-  function getAvatarsFromServer () {
+  // function getUsersFromServer () {
 
-    fetch(`http://localhost:4000/avatars`)
-      .then(resp => resp.json())
-      .then(avatarsFromServer => setAvatars(avatarsFromServer))
+  //   fetch(`http://localhost:4000/users`)
+  //     .then(resp => resp.json())
+  //     .then(usersFromServer => setUsers(usersFromServer))
       
-  }
-
-  function getUsersFromServer () {
-
-    fetch(`http://localhost:4000/users`)
-      .then(resp => resp.json())
-      .then(usersFromServer => setUsers(usersFromServer))
-      
-  }
+  // }
 
   function getPhotosFromServer () {
 
@@ -36,8 +27,7 @@ function Homepage() {
   }
 
   useEffect(getPhotosFromServer, [])
-  useEffect(getUsersFromServer, [])
-  useEffect(getAvatarsFromServer, [])
+  // useEffect(getUsersFromServer, [])
 
   return (
 
@@ -56,8 +46,6 @@ function Homepage() {
               key = {photo.id}
               //@ts-ignore
               photo = {photo}
-              avatars = {avatars}
-              users = {users}
             />
 
           )

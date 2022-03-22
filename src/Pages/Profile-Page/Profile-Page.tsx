@@ -4,7 +4,7 @@ import FooterCommon from "../../Components/Common/FooterCommon/FooterCommon";
 import ProfileContainer1 from "../../Components/Profile-Page/ProfileContainer1/ProfileContainer1";
 import ProfileContainer2 from "../../Components/Profile-Page/ProfileContainer2/ProfileContainer2";
 
-function Profile() {
+function Profile({user, setUser, validateUser}:any) {
   
   return (
   
