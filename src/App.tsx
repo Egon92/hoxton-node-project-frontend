@@ -53,7 +53,7 @@ function App() {
         <Route path="/signup" element={<Signup user = {user} setUser = {setUser} validateUser = {validateUser}/>} />
         <Route path="/picture" element={<Picture user = {user} setUser = {setUser} validateUser = {validateUser} />} />
         <Route path="*" element={<Error404 user = {user} setUser = {setUser} validateUser = {validateUser} />} />
-        </Routes>
+      </Routes>
     </div>
   );
 }

@@ -1,13 +1,13 @@
 import "./ProfilePhoto.css"
 
-function ProfilePhoto() {
+function ProfilePhoto({photo}:any) {
   
   return (
   
     <>
 
       <div className="photo-item">
-        <img src="/assets/icons/imageTest.jpg" alt="" />
+        <img src= {photo.src} alt="" />
       </div>
 
     </>

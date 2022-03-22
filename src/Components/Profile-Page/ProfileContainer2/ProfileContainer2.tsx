@@ -1,36 +1,39 @@
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import "./ProfileContainer2.css"
 
-export default function ProfileContainer2() {
+export default function ProfileContainer2({user, setUser, validateUser}:any) {
 
+    // useEffect(() => {
+    //     validateUser()
+    // }, [])
+      
+    // const navigate = useNavigate()
+    
+    // if(user === null) {
+    //     navigate('/login')
+    // }
+    
     return (
 
         <>
 
             <section className="profileContainer2-wrapper">
 
-                <div className="photo-item">
-                    <img src="/assets/icons/imageTest.jpg" alt="" />
-                </div>
+                {
 
-                <div className="photo-item">
-                    <img src="/assets/icons/imageTest.jpg" alt="" />
-                </div>
+                    //@ts-ignore
+                    user.photos.map(photo => 
+                        
+                        <ProfilePhoto 
+                            photo = {photo}
+                            key = {photo.id}
+                        />
 
-                <div className="photo-item">
-                    <img src="/assets/icons/imageTest.jpg" alt="" />
-                </div>
+                    )
 
-                <div className="photo-item">
-                    <img src="/assets/icons/imageTest.jpg" alt="" />
-                </div>
-
-                <div className="photo-item">
-                    <img src="/assets/icons/imageTest.jpg" alt="" />
-                </div>
-
-                <div className="photo-item">
-                    <img src="/assets/icons/imageTest.jpg" alt="" />
-                </div>
+                }
 
             </section>
 

@@ -4,6 +4,7 @@ import FooterCommon from "../../Components/Common/FooterCommon/FooterCommon";
 import ProfileContainer1 from "../../Components/Profile-Page/ProfileContainer1/ProfileContainer1";
 import ProfileContainer2 from "../../Components/Profile-Page/ProfileContainer2/ProfileContainer2";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Profile({user, setUser, validateUser}:any) {
   
@@ -11,6 +12,14 @@ function Profile({user, setUser, validateUser}:any) {
     validateUser()
   }, [])
   
+  console.log(user)
+  
+  // const navigate = useNavigate()
+
+  // if(user === null) {
+  //   navigate('/login')
+  // }
+
   return (
   
     <main className="profile-big-wrapper">
@@ -20,8 +29,9 @@ function Profile({user, setUser, validateUser}:any) {
         setUser = {setUser}
       />
       
-      <ProfileContainer1 />
-      <ProfileContainer2 />
+      <ProfileContainer1 user = {user} setUser = {setUser} validateUser = {validateUser} />
+      <ProfileContainer2 user = {user} setUser = {setUser} validateUser = {validateUser} />
+      
       <FooterCommon />
 
     </main>
