@@ -18,6 +18,10 @@ function Homepage({user, setUser, validateUser}:any) {
       
   // }
 
+  useEffect(() => {
+    validateUser()
+  }, [])
+
   function getPhotosFromServer () {
 
     fetch(`http://localhost:4000/photos`)
@@ -33,7 +37,10 @@ function Homepage({user, setUser, validateUser}:any) {
 
     <main className="main-home-wrapper">
 
-      <HeaderCommon/>
+      <HeaderCommon
+        user = {user}
+        setUser = {setUser}
+      />
 
       <div className="photos">
 

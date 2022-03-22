@@ -8,7 +8,11 @@ function Picture({user, setUser, validateUser}:any) {
 
     <>
 
-      <HeaderCommon/>
+      <HeaderCommon
+        user = {user}
+        setUser = {setUser}
+      />
+      
       <FooterCommon />
     
     </>

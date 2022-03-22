@@ -46,14 +46,14 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index element={<Navigate replace to="/home" user = {user} setUser = {setUser} validateUser = {validateUser} />} />
-        <Route path="/home" element={<Homepage />} user = {user} setUser = {setUser} validateUser = {validateUser} />
-        <Route path="/profile" element={<Profile />} user = {user} setUser = {setUser} validateUser = {validateUser} />
-        <Route path="/login" element={<Login />} user = {user} setUser = {setUser} validateUser = {validateUser} />
+        <Route index element={<Navigate replace to="/login" />} />
+        <Route path="/home" element={<Homepage user = {user} setUser = {setUser} validateUser = {validateUser} />} />
+        <Route path="/profile" element={<Profile user = {user} setUser = {setUser} validateUser = {validateUser} />} />
+        <Route path="/login" element={<Login  user = {user} setUser = {setUser} validateUser = {validateUser} />} />
         <Route path="/signup" element={<Signup user = {user} setUser = {setUser} validateUser = {validateUser}/>} />
         <Route path="/picture" element={<Picture user = {user} setUser = {setUser} validateUser = {validateUser} />} />
         <Route path="*" element={<Error404 user = {user} setUser = {setUser} validateUser = {validateUser} />} />
-      </Routes>
+        </Routes>
     </div>
   );
 }

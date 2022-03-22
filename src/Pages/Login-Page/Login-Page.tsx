@@ -78,13 +78,19 @@ function Login({user, setUser, validateUser}:any) {
         />
       </div>
       <div className="right-main-wrapper">
-        <form id="login-form">
+        <form id="login-form" onSubmit={function (e) {
+              handleFormSubmitSignIn(e)
+            }}>
           <h1>SocialLounge</h1>
           <label htmlFor="">
-            <input type="text" placeholder="Enter your email" required />
+            <input type="text" name="email" placeholder="Enter your email" required onChange={function (e) {
+              handleEmailChangeSignIn(e)
+            }}/>
           </label>
           <label htmlFor="">
-            <input type="text" placeholder="Enter your password" required />
+            <input type="text" name="password" placeholder="Enter your password" required onChange={function (e) {
+              handlePasswordChangeSignIn(e)
+            }}/>
           </label>
           <label htmlFor="">
             <button>Log In</button>
