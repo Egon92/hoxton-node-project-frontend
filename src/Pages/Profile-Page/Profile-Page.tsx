@@ -13,7 +13,7 @@ function Profile({user, setUser, validateUser}:any) {
   }, [])
   
   console.log(user)
-  
+
   // const navigate = useNavigate()
 
   // if(user === null) {
