@@ -2,10 +2,16 @@ import "./HomePost.css"
 //@ts-ignore
 import Heart from "react-heart"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function HomePost({photo}:any) {
   
   const [isClick, setClick] = useState(false);
+  const navigate = useNavigate()
+
+  function handleRedirectToUser(userId:any) {
+    navigate(`/users/${userId}`)
+  }
 
   return (
   
@@ -36,7 +42,9 @@ function HomePost({photo}:any) {
 
         <div className="photo-comments">
 
-          <span className="userCreated">{photo.userWhoCreatedIt.userName}</span>
+          <span className="userCreated" onClick={function () {
+            handleRedirectToUser(photo.userWhoCreatedIt.id)
+          }}>{photo.userWhoCreatedIt.userName}</span>
           
           <p>
             {photo.caption}
@@ -49,10 +57,17 @@ function HomePost({photo}:any) {
 
             //@ts-ignore
             photo.comments.map(comment => 
+
               <li key={comment.id}>
+
                 {/* <img src={comment.userWhoCreatedIt.avatar.src} /> */}
-                <span>{comment.userWhoCreatedIt.userName}</span>
+
+                <span className="userComment" onClick={function () {
+                  handleRedirectToUser(comment.userWhoCreatedIt.id)
+                }}>{comment.userWhoCreatedIt.userName}</span>
+
                 <span>{comment.content}</span>
+
               </li>
             )
 

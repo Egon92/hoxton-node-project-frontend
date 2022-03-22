@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "../ProfileContainer1/ProfileContainer1.css"
 
-export default function ProfileContainer1({user, setUser, validateUser}:any) {
+export default function ProfileContainer1({userItem, user, setUser, validateUser}:any) {
 
     // useEffect(() => {
     //     validateUser()
@@ -11,36 +11,69 @@ export default function ProfileContainer1({user, setUser, validateUser}:any) {
     // const navigate = useNavigate()
     
     // if(user === null) {
-    //     navigate('/login')
+    //     return <main>loading....</main>
     // }
 
-    console.log(user)
-    
+    const compare = userItem?.userName === user?.userName
+    const compareFollow = user?.following?.follower?.id === userItem?.id
+    console.log(compareFollow)
+
+    // console.log(user)
+
     return (
 
         <>
 
             <section className="profileContainer1-wrapper">
 
-                <div className="profile-image-wrapper">
-                    <img src={user.avatar[0].src} />
-                </div>
+                {
+
+                    userItem?.avatar[0]?.src ? (
+
+                        <div className="profile-image-wrapper">
+                            <img src={userItem?.avatar[0]?.src} />
+                        </div>
+
+                    ):(
+                        <div className="profile-image-wrapper">
+                            <img src="/assets/avatars/blankavatar.jpg" />
+                        </div>
+                    )
+
+                }
+                
 
                 <div className="profile-nav">
-                    <span>{user.userName}</span>
-                    <button>Follow</button>
+
+                    <span>{userItem?.userName}</span>
+                    
+                    {
+
+                        compare ? (
+                            <button>
+
+                            </button>
+                        ): compare === false && compareFollow ? (
+                            <button>Unfollow</button>
+                        ): (
+                            <button>Follow</button>
+                        )
+
+                    }
+
                 </div>
 
                 <div className="profile-stats">
-                    <span><strong>{user.countPhotosCreated}</strong> Posts</span>
-                    <span><strong>{user.countFollowers}</strong> Followers</span>
-                    <span><strong>{user.countFollowing}</strong> Following</span>
+                    <span><strong>{userItem?.countPhotosCreated}</strong> Posts</span>
+                    <span><strong>{userItem?.countFollowers}</strong> Followers</span>
+                    <span><strong>{userItem?.countFollowing}</strong> Following</span>
                 </div>
 
                 <div className="profile-bio">
                     <p>
-                        {user.fullName}
-                        {user.description}
+                        {userItem?.firstName} 
+                        {userItem?.lastName}
+                        {userItem?.description}
                     </p>
                 </div>
 

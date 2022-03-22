@@ -48,7 +48,7 @@ function HeaderCommon({user, setUser}:any) {
             <div className="dropdown">
 
               <li className="dropbtn">
-                  <img src={user.avatar.src} />
+                  <img src={user.avatar[0].src} />
                   {user.userName}
               </li>
 

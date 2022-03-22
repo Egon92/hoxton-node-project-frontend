@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto"
 import "./ProfileContainer2.css"
 
-export default function ProfileContainer2({user, setUser, validateUser}:any) {
+export default function ProfileContainer2({userItem, user, setUser, validateUser}:any) {
 
     // useEffect(() => {
     //     validateUser()
@@ -24,7 +24,7 @@ export default function ProfileContainer2({user, setUser, validateUser}:any) {
                 {
 
                     //@ts-ignore
-                    user.photos.map(photo => 
+                    userItem?.photos.map(photo => 
                         
                         <ProfilePhoto 
                             photo = {photo}

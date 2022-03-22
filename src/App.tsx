@@ -48,7 +48,7 @@ function App() {
       <Routes>
         <Route index element={<Navigate replace to="/login" />} />
         <Route path="/home" element={<Homepage user = {user} setUser = {setUser} validateUser = {validateUser} />} />
-        <Route path="/profile" element={<Profile user = {user} setUser = {setUser} validateUser = {validateUser} />} />
+        <Route path="/users/:id" element={<Profile user = {user} setUser = {setUser} validateUser = {validateUser} />} />
         <Route path="/login" element={<Login  user = {user} setUser = {setUser} validateUser = {validateUser} />} />
         <Route path="/signup" element={<Signup user = {user} setUser = {setUser} validateUser = {validateUser}/>} />
         <Route path="/picture" element={<Picture user = {user} setUser = {setUser} validateUser = {validateUser} />} />
