@@ -14,33 +14,24 @@ import Profile from "./Pages/Profile-Page/Profile-Page";
 import Signup from "./Pages/Signup-Page/Signup-Page";
 
 function App() {
+  const [user, setUser] = useState(null);
 
-  const [user, setUser] = useState(null)
-  
-  function validateUser () {
-
+  function validateUser() {
     if (localStorage.token) {
-        
-        fetch('http://localhost:4000/validate', {
-          headers: {
-              Authorization: localStorage.token
+      fetch("http://localhost:4000/validate", {
+        headers: {
+          Authorization: localStorage.token,
+        },
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          if (data.error) {
+            console.log("Validation failed.");
+          } else {
+            setUser(data);
           }
-        })
-        .then(resp => resp.json())
-        .then(data => {
-
-            if (data.error) {
-              console.log('Validation failed.')
-            } 
-            
-            else {
-              setUser(data)
-            }
-
-        })
-
+        });
     }
-
   }
 
   return (
