@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup-Page.css";
 
-function Signup({user, setUser, validateUser}:any) {
+function Signup({user, setUser, validateUser, setModal}:any) {
 
   const navigate = useNavigate()
 

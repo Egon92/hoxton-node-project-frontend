@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login-Page.css";
 
-function Login({user, setUser, validateUser}:any) {
+function Login({user, setUser, validateUser, setModal}:any) {
 
   useEffect(() => {
     validateUser()

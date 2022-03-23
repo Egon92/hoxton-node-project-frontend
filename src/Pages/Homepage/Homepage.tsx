@@ -5,7 +5,7 @@ import "./Homepage.css";
 import { useEffect, useState } from "react";
 import HomePost from "../../Components/Homepage/HomePost";
 
-function Homepage({user, setUser, validateUser}:any) {
+function Homepage({user, setUser, validateUser, setModal}:any) {
   
   const [photos, setPhotos] = useState([])
   // const [users, setUsers] = useState([])

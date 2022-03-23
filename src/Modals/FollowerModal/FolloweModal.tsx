@@ -1,51 +1,49 @@
+import ModalFollower from "../../Components/ModalFollower";
+import Modal from "../../Components/ModalFollower";
 import "./FollowerModal.css";
 
-function FollowerModal() {
+function FollowerModal({modal, setModal, user, userItem}:any) {
+
+  function handleCloseModal() {
+    setModal('')
+  }
+
   return (
+
     <div className="modal-wrapper">
       <div id="homesearch-modal-wrapper">
         <div id="top-modal">
+
           <div id="followers-wrapper">
             <span id="followers">Followers</span>
           </div>
+
           <div id="closetab-wrapper">
-            <span id="closetab">Close</span>
+            <span id="closetab" onClick={function () {
+              handleCloseModal()
+            }}>Close</span>
           </div>
+
         </div>
+
         <div id="bottom-modal">
-          <div className="profile-wrapper">
-            <div className="profile-pic-wrapper">
-              <img
-                className="profile-pic"
-                src="../assets/icons/leva.jpg"
-                alt=""
+
+          {
+
+            //@ts-ignore
+            userItem.followedBy.map(follower => 
+              
+              <ModalFollower
+                key = {follower.id}
+                follower = {follower}
               />
-            </div>
-            <div className="name-username-wrapper">
-              <div className="name">Name Lastname</div>
-              <div className="username">Username</div>
-            </div>
-            <div className="remove-wrapper">
-              <button className="remove-button">Remove</button>
-            </div>
-          </div>
-          <div className="profile-wrapper">
-            <div className="profile-pic-wrapper">
-              <img
-                className="profile-pic"
-                src="../assets/icons/leva.jpg"
-                alt=""
-              />
-            </div>
-            <div className="name-username-wrapper">
-              <div className="name">Name Lastname</div>
-              <div className="username">Username</div>
-            </div>
-            <div className="remove-wrapper">
-              <button className="remove-button">Add</button>
-            </div>
-          </div>
+              
+            )
+
+          }
+
         </div>
+
       </div>
     </div>
   );
