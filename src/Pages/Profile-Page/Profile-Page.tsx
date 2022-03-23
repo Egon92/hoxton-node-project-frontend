@@ -17,6 +17,7 @@ function Profile({user, setUser, validateUser, modal, setModal}:any) {
   const params = useParams()
 
   const [userItem, setUserItem]:any = useState(null)
+  const [followers, setFollowers]:any = useState([])
 
   function getIndividualUserFromServer () {
 
@@ -27,6 +28,16 @@ function Profile({user, setUser, validateUser, modal, setModal}:any) {
   }
   
   useEffect(getIndividualUserFromServer, [])
+
+  function getFollowersFromServer () {
+
+    fetch(`http://localhost:4000/followers`)
+      .then(resp => resp.json())
+      .then(followersFromServer => setFollowers(followersFromServer))
+    
+  }
+
+  useEffect(getFollowersFromServer, [])
 
   if (userItem === null) {
       return <main>Loading...</main>
@@ -65,7 +76,7 @@ function Profile({user, setUser, validateUser, modal, setModal}:any) {
         setUser = {setUser}
       />
       
-      <ProfileContainer1 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} />
+      <ProfileContainer1 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} followers = {followers} setFollowers = {setFollowers} />
       <ProfileContainer2 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} />
       
       <FooterCommon />

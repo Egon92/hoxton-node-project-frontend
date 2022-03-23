@@ -12,12 +12,22 @@ function HeaderCommon({user, setUser}:any) {
       navigate("/login")
   }
 
+  function redirectToHome() {
+    navigate('/home')
+  }
+  
+  function redirectToProfile(user:any) {
+    navigate(`../users/${user.id}`)
+  }
+  
   return (
   
     <header className="header-container">
 
       <ul className="header-logo-container">
-        <li>SocialLounge</li>
+        <li onClick={function () {
+          redirectToHome()
+        }}>SocialLounge</li>
       </ul>
 
       <ul className="header-search-container">
@@ -47,7 +57,9 @@ function HeaderCommon({user, setUser}:any) {
 
             <div className="dropdown">
 
-              <li className="dropbtn">
+              <li className="dropbtn" onClick={function () {
+                redirectToProfile(user)
+              }}>
                   <img src={user.avatar[0].src} />
                   {user.userName}
               </li>

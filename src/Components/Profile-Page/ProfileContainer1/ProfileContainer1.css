@@ -26,13 +26,14 @@ section.profileContainer1-wrapper .profile-nav  span {
     cursor: pointer;
 }
 
-section.profileContainer1-wrapper .profile-nav  button {
+section.profileContainer1-wrapper .profile-nav  button.follow {
     font-size: 16px;
     font-weight: 600;
     border: none;
     outline: none;
     padding: 10px 10px;
     background-color: rgb(236, 85, 85);
+    cursor: pointer;
 }
 
 section.profileContainer1-wrapper .profile-bio {
@@ -45,6 +46,16 @@ section.profileContainer1-wrapper .profile-bio {
 section.profileContainer1-wrapper .profile-bio p {
     font-size: 16px;
     width: 65ch;
+}
+
+.unfollow {
+    background-color: rgb(95, 95, 235);
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    padding: 10px 10px;
+    cursor: pointer;
 }
 
 section.profileContainer1-wrapper .profile-stats {

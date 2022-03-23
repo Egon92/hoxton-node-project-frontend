@@ -35,6 +35,10 @@ export default function ModalFollower({follower}:any) {
                     <button className="remove-button">Remove</button>
                 </div>
 
+                {/* <div className="remove-wrapper">
+                    <button className="remove-button">Follower</button>
+                </div> */}
+
             </div>
 
         </>

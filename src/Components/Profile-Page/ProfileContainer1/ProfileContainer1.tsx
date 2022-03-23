@@ -1,18 +1,6 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import "../ProfileContainer1/ProfileContainer1.css"
 
-export default function ProfileContainer1({userItem, user, setUser, validateUser, setModal}:any) {
-
-    // useEffect(() => {
-    //     validateUser()
-    // }, [])
-      
-    // const navigate = useNavigate()
-    
-    // if(user === null) {
-    //     return <main>loading....</main>
-    // }
+export default function ProfileContainer1({userItem, user, setUser, validateUser, setModal, followers, setFollowers}:any) {
 
     function handleShowFollowers() {
         setModal("following")
@@ -22,11 +10,86 @@ export default function ProfileContainer1({userItem, user, setUser, validateUser
         setModal("following")
     }
 
-    const compare = userItem?.userName === user?.userName
-    const compareFollow = user?.following?.follower?.id === userItem?.id
-    console.log(compareFollow)
+    function follow(user:any, userItem:any) {
 
-    // console.log(user)
+        let combination = false
+
+        for (const follow of followers) {
+
+            if (follow.followerId === user.id && follow.followingId === userItem.id) {
+                combination = true
+            }
+
+        }
+
+        if (combination === false) {
+            
+        const followData = {
+            followerId: user.id,
+            followingId: userItem.id
+        }
+
+        fetch('http://localhost:4000/followers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: localStorage.token
+            },
+            body: JSON.stringify(followData)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+        
+            if (data.error) {
+                alert(data.error)
+            } 
+            
+            else {
+                const newArray = [...followers, data]
+                setFollowers(newArray)
+            }
+
+            })
+
+        }
+
+        else {
+            alert("you already follow him")
+        }
+
+    }
+
+    function unFollow(user:any, userItem:any) {
+        
+        const followersArray = [...followers]
+        const getFollower = followersArray.find(follower => follower.followerId === user.id && follower.followingId === userItem.id)
+        
+        fetch(`http://localhost:4000/followers/${getFollower.id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: localStorage.token
+        }
+        })
+        .then(resp => resp.json())
+        .then(data => {
+        
+        if (data.error) {
+            alert(data.error)
+        } 
+            
+        else {
+            // console.log(data)
+            setFollowers(data)
+        }
+
+        })
+
+    }
+
+    //@ts-ignore
+    const isFollowed = !!userItem.followedBy.find(potentialFollower => potentialFollower.following.userName === user.userName)
+    const userCheck = user.userName === userItem.userName
 
     return (
 
@@ -57,15 +120,17 @@ export default function ProfileContainer1({userItem, user, setUser, validateUser
                     
                     {
 
-                        compare ? (
-                            <button>
-
-                            </button>
-                        ): compare === false && compareFollow ? (
-                            <button>Unfollow</button>
-                        ): (
-                            <button>Follow</button>
-                        )
+                        isFollowed ? (
+                            <button className="unfollow"  onClick={function () {
+                                unFollow(user, userItem)
+                            }}>Unfollow</button>
+                        ): isFollowed === false && userCheck === false ? 
+                        
+                        (
+                            <button className="follow" onClick={function () {
+                                follow(user, userItem)
+                            }}>Follow</button>
+                        ):null
 
                     }
 
