@@ -23,6 +23,7 @@ section.profileContainer1-wrapper .profile-nav {
 section.profileContainer1-wrapper .profile-nav  span {
     font-size: 28px;
     font-weight: 700;
+    cursor: pointer;
 }
 
 section.profileContainer1-wrapper .profile-nav  button {
@@ -56,6 +57,7 @@ section.profileContainer1-wrapper .profile-stats {
 section.profileContainer1-wrapper .profile-stats span {
     font-size: 16px;
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 section.profileContainer1-wrapper .profile-image-wrapper {

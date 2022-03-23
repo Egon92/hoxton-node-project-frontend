@@ -5,8 +5,9 @@ import ProfileContainer1 from "../../Components/Profile-Page/ProfileContainer1/P
 import ProfileContainer2 from "../../Components/Profile-Page/ProfileContainer2/ProfileContainer2";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Modals from "../../Components/Modals";
 
-function Profile({user, setUser, validateUser}:any) {
+function Profile({user, setUser, validateUser, modal, setModal}:any) {
   
   useEffect(() => {
     validateUser()
@@ -48,15 +49,23 @@ function Profile({user, setUser, validateUser}:any) {
   // }
 
   return (
+    
   
     <main className="profile-big-wrapper">
+
+      <Modals 
+        modal = {modal}
+        setModal = {setModal}
+        user = {user}
+        userItem = {userItem}
+      />
 
       <HeaderCommon
         user = {user}
         setUser = {setUser}
       />
       
-      <ProfileContainer1 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} />
+      <ProfileContainer1 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} />
       <ProfileContainer2 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} />
       
       <FooterCommon />
