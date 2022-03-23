@@ -1,6 +1,6 @@
 import "../ProfileContainer1/ProfileContainer1.css"
 
-export default function ProfileContainer1({userItem, user, setUser, validateUser, setModal, followers, setFollowers}:any) {
+export default function ProfileContainer1({setUserItem, userItem, user, setUser, validateUser, setModal, followers, setFollowers}:any) {
 
     function handleShowFollowers() {
         setModal("following")
@@ -45,8 +45,7 @@ export default function ProfileContainer1({userItem, user, setUser, validateUser
             } 
             
             else {
-                const newArray = [...followers, data]
-                setFollowers(newArray)
+                setUserItem(data)
             }
 
             })
@@ -79,8 +78,7 @@ export default function ProfileContainer1({userItem, user, setUser, validateUser
         } 
             
         else {
-            // console.log(data)
-            setFollowers(data)
+            setUserItem(data)
         }
 
         })

@@ -3,6 +3,19 @@ section.profileContainer2-wrapper .photo-item {
     place-items: center;
 }
 
+.photo-item-wrapper-ultimate {
+    display: grid;
+    grid-template-columns: 0.9fr 50px;
+    grid-gap: 10px;
+
+}
+
+.photo-item-wrapper-ultimate span {
+    font-size: 22px;
+    color: rgb(231, 74, 74);
+    cursor: pointer;
+}
+
 section.profileContainer2-wrapper img {
     height: 250px;
     width: 250px;

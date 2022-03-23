@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Modals from "../../Components/Modals";
 
-function Profile({user, setUser, validateUser, modal, setModal}:any) {
+function Profile({user, setUser, validateUser, modal, setModal, searchTerm, setSearchTerm}:any) {
   
   useEffect(() => {
     validateUser()
@@ -18,6 +18,17 @@ function Profile({user, setUser, validateUser, modal, setModal}:any) {
 
   const [userItem, setUserItem]:any = useState(null)
   const [followers, setFollowers]:any = useState([])
+  const [users, setUsers]:any = useState([])
+
+  function getUsersFromServer () {
+
+    fetch(`http://localhost:4000/users`)
+      .then(resp => resp.json())
+      .then(usersFromServer => setUsers(usersFromServer))
+    
+  }
+
+  useEffect(getUsersFromServer, [])
 
   function getIndividualUserFromServer () {
 
@@ -51,7 +62,7 @@ function Profile({user, setUser, validateUser, modal, setModal}:any) {
     return <main>Loading...</main>
   }
 
-  console.log(user)
+  // console.log(user)
 
   // const navigate = useNavigate()
 
@@ -59,9 +70,15 @@ function Profile({user, setUser, validateUser, modal, setModal}:any) {
   //   navigate('/login')
   // }
 
+  function filterUsersBySearch() {
+    let usersFiltered = [...users]
+    return usersFiltered = usersFiltered.filter(user => user.userName === searchTerm )
+  }
+
+  const filterUsers = filterUsersBySearch()
+
   return (
     
-  
     <main className="profile-big-wrapper">
 
       <Modals 
@@ -69,14 +86,19 @@ function Profile({user, setUser, validateUser, modal, setModal}:any) {
         setModal = {setModal}
         user = {user}
         userItem = {userItem}
+        filterUsersBySearch = {filterUsersBySearch}
+        filterUsers = {filterUsers}
       />
 
       <HeaderCommon
         user = {user}
         setUser = {setUser}
+        setModal = {setModal}
+        searchTerm = {searchTerm}
+        setSearchTerm = {setSearchTerm}
       />
       
-      <ProfileContainer1 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} followers = {followers} setFollowers = {setFollowers} />
+      <ProfileContainer1 setUserItem = {setUserItem} userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} followers = {followers} setFollowers = {setFollowers} />
       <ProfileContainer2 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} />
       
       <FooterCommon />

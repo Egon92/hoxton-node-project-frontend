@@ -1,4 +1,3 @@
-import Modal from "../../Components/ModalFollower";
 import ModalFollowing from "../../Components/ModalFollowing";
 import "./FollowingModal.css";
 
@@ -40,9 +39,9 @@ function FollowingModal({user, modal, setModal, userItem}:any) {
                 following = {following}
               />
               
-            )
+            
 
-          }
+          )}
 
         </div>
       </div>

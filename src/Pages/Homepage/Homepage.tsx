@@ -4,9 +4,11 @@ import "./Homepage.css";
 
 import { useEffect, useState } from "react";
 import HomePost from "../../Components/Homepage/HomePost";
+import Modals from "../../Components/Modals";
 
-function Homepage({user, setUser, validateUser, setModal}:any) {
+function Homepage({user, setUser, validateUser, setModal, searchTerm, setSearchTerm}:any) {
   
+  // const userItem = null
   const [photos, setPhotos] = useState([])
   // const [users, setUsers] = useState([])
 
@@ -33,13 +35,29 @@ function Homepage({user, setUser, validateUser, setModal}:any) {
   useEffect(getPhotosFromServer, [])
   // useEffect(getUsersFromServer, [])
 
+  if (!photos) {
+    return <main>loading...</main>
+  }
+  
   return (
 
     <main className="main-home-wrapper">
 
+      {/* <Modals 
+        modal = {modal}
+        setModal = {setModal}
+        user = {user}
+        userItem = {userItem}
+        filterUsersBySearch = {filterUsersBySearch}
+        filterUsers = {filterUsers}
+      /> */}
+
       <HeaderCommon
         user = {user}
         setUser = {setUser}
+        setModal = {setModal}
+        searchTerm = {searchTerm}
+        setSearchTerm = {setSearchTerm}
       />
 
       <div className="photos">
@@ -54,6 +72,7 @@ function Homepage({user, setUser, validateUser, setModal}:any) {
               //@ts-ignore
               photo = {photo}
               user = {user}
+              setPhotos = {setPhotos}
             />
 
           )

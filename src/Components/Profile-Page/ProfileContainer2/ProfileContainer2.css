@@ -19,3 +19,14 @@ section.profileContainer2-wrapper img {
     height: 300px;
     width: 300px;
 }
+
+.not-auth {
+    display: grid;
+    place-items: center;
+}
+
+.not-auth span {
+    font-size: 16px;
+    color: rgb(241, 71, 71);
+    font-weight: 900;
+}

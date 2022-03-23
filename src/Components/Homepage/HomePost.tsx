@@ -4,11 +4,16 @@ import Heart from "react-heart"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function HomePost({photo, user}:any) {
+function HomePost({photo, user, setPhotos}:any) {
   
   const [isClick, setClick] = useState(false);
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState('')
+
+  if (photo === null) {
+
+  }
+  const navigate = useNavigate()
 
   function getCommentsFromServer () {
 
@@ -18,9 +23,7 @@ function HomePost({photo, user}:any) {
     
   }
 
-useEffect(getCommentsFromServer, [])
-
-  const navigate = useNavigate()
+  useEffect(getCommentsFromServer, [])
 
   function handleRedirectToUser(userId:any) {
     navigate(`/users/${userId}`)
@@ -56,40 +59,42 @@ useEffect(getCommentsFromServer, [])
       } 
       
       else {
-          const newArray:any = [...comments, data]
-          setComments(newArray)
+          setPhotos(data)
       }
 
       })
 
   }
 
-  function deleteComment(e:any) {
+  async function deleteComment(e:any) {
         
     const commentsArray = [...comments]
     //@ts-ignore
-    const getComment:any = commentsArray.find(comment => comment.userId === user.id && comment.photoId === photo.id)
+    const getComment:any = commentsArray.find(comment => comment?.userId === user?.id && comment?.photoId === photo?.id)
     
-    fetch(`http://localhost:4000/comments/${getComment.id}`, {
-    method: 'DELETE',
-    headers: {
-        'Content-Type': 'application/json',
-        Authorization: localStorage.token
-    }
-    })
-    .then(resp => resp.json())
-    .then(data => {
-    
-    if (data.error) {
-        alert(data.error)
-    } 
-        
-    else {
-        // console.log(data)
-        setComments(data)
-    }
+    if (getComment) {
 
-    })
+      await fetch(`http://localhost:4000/comments/${getComment.id}`, {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage.token
+      }
+      })
+      .then(resp => resp.json())
+      .then(data => {
+      
+      if (data.error) {
+          alert(data.error)
+      } 
+          
+      else {
+          setPhotos(data)
+      }
+
+      })
+
+    }
 
   }
 
@@ -100,12 +105,12 @@ useEffect(getCommentsFromServer, [])
       <div className="photo-wrapper">
 
         <div className="home-photo-nav">
-          <img src={photo.userWhoCreatedIt.avatar[0].src} />
-          <span>{photo.userWhoCreatedIt.userName}</span>
+          <img src={photo?.userWhoCreatedIt?.avatar[0]?.src} />
+          <span>{photo?.userWhoCreatedIt?.userName}</span>
         </div>
 
         <div className="photo-large">
-          <img src={photo.src} />
+          <img src={photo?.src} />
         </div>
 
         <div className="photo-buttons">
@@ -114,7 +119,7 @@ useEffect(getCommentsFromServer, [])
             <Heart isActive={isClick} onClick={() => setClick(!isClick)} style = {{height:'20px'}} />
           </div>
 
-          <span className="likes">{photo.countLikesInside} Likes</span>
+          <span className="likes">{photo?.countLikesInside} Likes</span>
 
           <hr />
 
@@ -123,32 +128,32 @@ useEffect(getCommentsFromServer, [])
         <div className="photo-comments">
 
           <span className="userCreated" onClick={function () {
-            handleRedirectToUser(photo.userWhoCreatedIt.id)
-          }}>{photo.userWhoCreatedIt.userName}</span>
+            handleRedirectToUser(photo?.userWhoCreatedIt?.id)
+          }}>{photo?.userWhoCreatedIt?.userName}</span>
           
           <p>
-            {photo.caption}
+            {photo?.caption}
           </p>
 
 
-          <span className="viewAll">View all {photo.countCommentsInside} Comments</span>
+          <span className="viewAll">View all {photo?.countCommentsInside} Comments</span>
 
           <div className="comments-group">
 
             {
 
               //@ts-ignore
-              photo.comments.map(comment => 
+              photo?.comments?.map(comment => 
 
-                <li key={comment.id} className="comments-inside-photo">
+                <li key={comment?.id} className="comments-inside-photo">
 
                   {/* <img src={comment.userWhoCreatedIt.avatar.src} /> */}
 
                   <span className="userComment" onClick={function () {
-                    handleRedirectToUser(comment.userWhoCreatedIt.id)
-                  }}>{comment.userWhoCreatedIt.userName}</span>
+                    handleRedirectToUser(comment?.userWhoCreatedIt.id)
+                  }}>{comment?.userWhoCreatedIt?.userName}</span>
 
-                  <span>{comment.content}</span>
+                  <span>{comment?.content}</span>
 
                   <button className="remove-comment" onClick={function (e) {
                     deleteComment(e)

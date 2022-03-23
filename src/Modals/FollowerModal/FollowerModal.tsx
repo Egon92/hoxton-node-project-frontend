@@ -1,5 +1,4 @@
 import ModalFollower from "../../Components/ModalFollower";
-import Modal from "../../Components/ModalFollower";
 import "./FollowerModal.css";
 
 function FollowerModal({modal, setModal, user, userItem}:any) {
@@ -32,15 +31,17 @@ function FollowerModal({modal, setModal, user, userItem}:any) {
 
             //@ts-ignore
             userItem.followedBy.map(follower => 
-              
+
+            
+      
               <ModalFollower
                 key = {follower.id}
                 follower = {follower}
               />
               
-            )
+            
 
-          }
+          )}
 
         </div>
 

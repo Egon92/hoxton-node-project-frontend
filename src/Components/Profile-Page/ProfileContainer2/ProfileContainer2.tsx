@@ -25,6 +25,8 @@ export default function ProfileContainer2({userItem, user, setUser, validateUser
                             <ProfilePhoto 
                                 photo = {photo}
                                 key = {photo.id}
+                                user = {user}
+                                userItem = {userItem}
                             />
 
                         )

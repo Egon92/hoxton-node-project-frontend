@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Modals from "./Components/Modals";
-import FollowerModal from "./Modals/FollowerModal/FolloweModal";
+import FollowerModal from "./Modals/FollowerModal/FollowerModal";
 import FollowingModal from "./Modals/FollowingModal/FollowingModal";
 import HomeSearchModal from "./Modals/HomeSearch/HomeSearchModal";
 import PhotoModal from "./Modals/PhotoModal/PhotoModal";
@@ -22,6 +22,7 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [modal, setModal] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
 
   function validateUser() {
     if (localStorage.token) {
@@ -47,12 +48,12 @@ function App() {
 
       <Routes>
         <Route index element={<Navigate replace to="/login" />} />
-        <Route path="/home" element={<Homepage user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} />} />
-        <Route path="/users/:id" element={<Profile user = {user} setUser = {setUser} validateUser = {validateUser} modal = {modal} setModal = {setModal} />} />
-        <Route path="/login" element={<Login  user = {user} setUser = {setUser} validateUser = {validateUser} />} setModal = {setModal} />
-        <Route path="/signup" element={<Signup user = {user} setUser = {setUser} validateUser = {validateUser}/>} setModal = {setModal} />
-        <Route path="/picture" element={<Picture user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} />} />
-        <Route path="*" element={<Error404 user = {user} setUser = {setUser} validateUser = {validateUser} />} />
+        <Route path="/home" element={<Homepage user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
+        <Route path="/users/:id" element={<Profile user = {user} setUser = {setUser} validateUser = {validateUser} modal = {modal} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
+        <Route path="/login" element={<Login  user = {user} setUser = {setUser} validateUser = {validateUser} />} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
+        <Route path="/signup" element={<Signup user = {user} setUser = {setUser} validateUser = {validateUser}/>} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
+        <Route path="/picture" element={<Picture user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
+        <Route path="*" element={<Error404 user = {user} setUser = {setUser} validateUser = {validateUser} />} searchTerm = {searchTerm} />
       </Routes>
 
         {/* {

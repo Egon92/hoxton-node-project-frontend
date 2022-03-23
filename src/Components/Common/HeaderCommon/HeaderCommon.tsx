@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import "./HeaderCommon.css"
 
-function HeaderCommon({user, setUser}:any) {
+function HeaderCommon({user, setUser, setModal, searchTerm, setSearchTerm}:any) {
   
   const navigate = useNavigate()
 
@@ -10,6 +10,15 @@ function HeaderCommon({user, setUser}:any) {
       localStorage.removeItem('token')
       setUser(null)
       navigate("/login")
+  }
+
+  function handleSubmit(e:any) {
+    e.preventDefault()
+    setModal('homeSearch')
+  }
+  
+  function submitSearch(inputValue:any) {
+    setSearchTerm(inputValue)
   }
 
   function redirectToHome() {
@@ -32,9 +41,14 @@ function HeaderCommon({user, setUser}:any) {
 
       <ul className="header-search-container">
 
-        <form className="form-search">
+        <form className="form-search" onSubmit={function (e) {
+          handleSubmit(e)
+        }}>
 
-          <input type="text" name="searchProduct" placeholder="Search for users." />
+          <input type="text" name="searchProduct" placeholder="Search for users." onChange={function (e) {
+            e.preventDefault()
+            submitSearch(e.target.value)
+          }}/>
 
           <button id="special-button">
               Search

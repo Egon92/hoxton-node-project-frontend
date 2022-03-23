@@ -12,6 +12,11 @@
   border-style: none;
   background-color: white;
 }
+.remove-modal-home {
+  cursor: pointer;
+  background-color: rgb(238, 107, 107);
+  place-items: center;
+}
 #top-modal {
   display: grid;
   grid-template-columns: repeat(2, auto);
