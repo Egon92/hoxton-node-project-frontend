@@ -69,21 +69,28 @@ main.main-home-wrapper .photos .photo-comments {
     grid-template: 
     "userCreated caption" 0.2fr
     "viewAll viewAll" 0.2fr
-    "li li" 0.6fr /
-    0.3fr 0.7fr;
+    "comments-group comments-group" auto /
+    0.5fr 0.5fr;
     border: none;
     outline: none;
     grid-gap: 30px;
 }
 
-.photo-comments li {
-    grid-area: li;
+.photo-comments .comments-group li.comments-inside-photo {
     display: grid;
-    grid-template-columns: 0.1fr 0.9fr;
+    grid-template-columns: 0.2fr 0.7fr 0.1fr;
     grid-gap: 30px;
     display: grid;
     place-items: center;
     padding-left: 40px;
+    border-bottom: 1px solid #000;
+}
+
+.comments-group {
+    grid-area: comments-group;
+    display: grid;
+    grid-template-rows: 30px;
+    grid-gap: 10px;
 }
 
 .photo-comments .viewAll {

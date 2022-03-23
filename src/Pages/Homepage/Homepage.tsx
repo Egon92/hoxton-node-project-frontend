@@ -53,6 +53,7 @@ function Homepage({user, setUser, validateUser, setModal}:any) {
               key = {photo.id}
               //@ts-ignore
               photo = {photo}
+              user = {user}
             />
 
           )
