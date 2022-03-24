@@ -9,6 +9,7 @@ function HomePost({photo, user, setPhotos}:any) {
   const [isClick, setClick] = useState(false);
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState('')
+  const [photoLikes, setPhotoLikes] = useState([])
 
   if (photo === null) {
 
@@ -24,6 +25,16 @@ function HomePost({photo, user, setPhotos}:any) {
   }
 
   useEffect(getCommentsFromServer, [])
+
+  function getPhotoLikesFromServer () {
+
+    fetch(`http://localhost:4000/photoLikes`)
+      .then(resp => resp.json())
+      .then(photoLikesFromServer => setPhotoLikes(photoLikesFromServer))
+    
+  }
+
+  useEffect(getPhotoLikesFromServer, [])
 
   function handleRedirectToUser(userId:any) {
     navigate(`/users/${userId}`)
@@ -75,6 +86,77 @@ function HomePost({photo, user, setPhotos}:any) {
     if (getComment) {
 
       await fetch(`http://localhost:4000/comments/${getComment.id}`, {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: localStorage.token
+      }
+      })
+      .then(resp => resp.json())
+      .then(data => {
+      
+      if (data.error) {
+          alert(data.error)
+      } 
+          
+      else {
+          setPhotos(data)
+      }
+
+      })
+
+    }
+
+  }
+
+  async function createPhotoLike(e:any) {
+
+    e.preventDefault()
+    
+    const photoLikeData = {
+      userId: user.id,
+      photoId: photo.id
+    }
+
+  await fetch('http://localhost:4000/photoLikes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: localStorage.token
+        },
+        body: JSON.stringify(photoLikeData)
+    })
+      .then(resp => resp.json())
+      .then(data => {
+    
+        if (data.error) {
+            alert(data.error)
+        } 
+        
+        else {
+            setPhotos(data)
+        }
+
+      })
+
+  }
+
+  async function deletePhotoLike(e:any) {
+        
+    const getComment = {
+      userId: user.id,
+      photoId: photo.id
+    }    
+
+    //@ts-ignore
+    const result = user.photosLiked.filter(photoNew => photo.id === photoNew.photoId)
+
+    //@ts-ignore
+    const findId = photoLikes.findIndex(photoNew => photoNew.userId === user.id && photoNew.photoId === photo.id )
+
+    if (result) {
+
+      await fetch(`http://localhost:4000/photoLikes/${result}`, {
       method: 'DELETE',
       headers: {
           'Content-Type': 'application/json',

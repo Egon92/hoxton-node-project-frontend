@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Modals from "../../Components/Modals";
 
-function Profile({user, setUser, validateUser, modal, setModal, searchTerm, setSearchTerm}:any) {
+function Profile({user, setUser, validateUser, modal, setModal, searchTerm, setSearchTerm, photos, setPhotos}:any) {
   
   useEffect(() => {
     validateUser()
@@ -99,7 +99,7 @@ function Profile({user, setUser, validateUser, modal, setModal, searchTerm, setS
       />
       
       <ProfileContainer1 setUserItem = {setUserItem} userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} followers = {followers} setFollowers = {setFollowers} />
-      <ProfileContainer2 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} />
+      <ProfileContainer2 userItem = {userItem} user = {user} setUser = {setUser} validateUser = {validateUser} setUserItem = {setUserItem} photos = {photos} setPhotos = {setPhotos} />
       
       <FooterCommon />
 

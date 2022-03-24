@@ -1,39 +1,16 @@
 import FooterCommon from "../../Components/Common/FooterCommon/FooterCommon";
 import HeaderCommon from "../../Components/Common/HeaderCommon/HeaderCommon";
 import "./Homepage.css";
-
 import { useEffect, useState } from "react";
 import HomePost from "../../Components/Homepage/HomePost";
 import Modals from "../../Components/Modals";
 
-function Homepage({user, setUser, validateUser, setModal, searchTerm, setSearchTerm}:any) {
+function Homepage({user, setUser, validateUser, setModal, searchTerm, setSearchTerm, photos, setPhotos}:any) {
   
-  // const userItem = null
-  const [photos, setPhotos] = useState([])
-  // const [users, setUsers] = useState([])
-
-  // function getUsersFromServer () {
-
-  //   fetch(`http://localhost:4000/users`)
-  //     .then(resp => resp.json())
-  //     .then(usersFromServer => setUsers(usersFromServer))
-      
-  // }
-
   useEffect(() => {
     validateUser()
   }, [])
 
-  function getPhotosFromServer () {
-
-    fetch(`http://localhost:4000/photos`)
-      .then(resp => resp.json())
-      .then(photosFromServer => setPhotos(photosFromServer))
-      
-  }
-
-  useEffect(getPhotosFromServer, [])
-  // useEffect(getUsersFromServer, [])
 
   if (!photos) {
     return <main>loading...</main>
@@ -64,6 +41,7 @@ function Homepage({user, setUser, validateUser, setModal, searchTerm, setSearchT
 
         {
 
+          //@ts-ignore
           photos.map(photo =>
             
             <HomePost 
@@ -72,6 +50,7 @@ function Homepage({user, setUser, validateUser, setModal, searchTerm, setSearchT
               //@ts-ignore
               photo = {photo}
               user = {user}
+              photos = {photos}
               setPhotos = {setPhotos}
             />
 
