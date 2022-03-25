@@ -18,6 +18,7 @@ function Homepage({
   // const userItem = null
   const [photos, setPhotos] = useState([]);
   const [users, setUsers] = useState([]);
+  const [userItem, setUserItem]: any = useState(null);
 
   function getUsersFromServer() {
     fetch(`http://localhost:4000/users`)
@@ -34,7 +35,19 @@ function Homepage({
       .then((resp) => resp.json())
       .then((photosFromServer) => setPhotos(photosFromServer));
   }
+  function getIndividualUserFromServer() {
+    fetch(`http://localhost:4000/users/${params.id}`)
+      .then((resp) => resp.json())
+      .then((userFromServer) => setUserItem(userFromServer));
+  }
+  function filterUsersBySearch() {
+    let usersFiltered = [...users];
+    return (usersFiltered = usersFiltered.filter(
+      (user) => user.userName === searchTerm
+    ));
+  }
 
+  const filterUsers = filterUsersBySearch();
   useEffect(getPhotosFromServer, []);
   // useEffect(getUsersFromServer, [])
 

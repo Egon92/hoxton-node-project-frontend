@@ -19,10 +19,9 @@ import Profile from "./Pages/Profile-Page/Profile-Page";
 import Signup from "./Pages/Signup-Page/Signup-Page";
 
 function App() {
-
   const [user, setUser] = useState(null);
-  const [modal, setModal] = useState('')
-  const [searchTerm, setSearchTerm] = useState('')
+  const [modal, setModal] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   function validateUser() {
     if (localStorage.token) {
@@ -43,66 +42,116 @@ function App() {
   }
 
   return (
-
     <div className="App">
-
       <Routes>
         <Route index element={<Navigate replace to="/login" />} />
-        <Route path="/home" element={<Homepage user = {user} setUser = {setUser} modal={modal} validateUser = {validateUser} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
-        <Route path="/users/:id" element={<Profile user = {user} setUser = {setUser} validateUser = {validateUser} modal = {modal} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
-        <Route path="/login" element={<Login  user = {user} setUser = {setUser} validateUser = {validateUser} />} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
-        <Route path="/signup" element={<Signup user = {user} setUser = {setUser} validateUser = {validateUser}/>} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
-        <Route path="/picture" element={<Picture user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
-        <Route path="*" element={<Error404 user = {user} setUser = {setUser} validateUser = {validateUser} />} searchTerm = {searchTerm} />
+        <Route
+          path="/home"
+          element={
+            <Homepage
+              user={user}
+              setUser={setUser}
+              modal={modal}
+              validateUser={validateUser}
+              setModal={setModal}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }
+        />
+        <Route
+          path="/users/:id"
+          element={
+            <Profile
+              user={user}
+              setUser={setUser}
+              validateUser={validateUser}
+              modal={modal}
+              setModal={setModal}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login user={user} setUser={setUser} validateUser={validateUser} />
+          }
+          setModal={setModal}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
+        <Route
+          path="/signup"
+          element={
+            <Signup user={user} setUser={setUser} validateUser={validateUser} />
+          }
+          setModal={setModal}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
+        <Route
+          path="/picture"
+          element={
+            <Picture
+              user={user}
+              setUser={setUser}
+              validateUser={validateUser}
+              setModal={setModal}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Error404
+              user={user}
+              setUser={setUser}
+              validateUser={validateUser}
+            />
+          }
+          searchTerm={searchTerm}
+        />
       </Routes>
 
-        {
-        modal === 'followers' ? (
-
-          <FollowerModal 
+      {
+        modal === "followers" ? (
+          <FollowerModal
             //@ts-ignore
-            setModal = {setModal}
-            user = {user}
-            setUser = {setUser}
+            setModal={setModal}
+            user={user}
+            setUser={setUser}
           />
-
-        ): modal === 'following' ? (
-
-          <FollowingModal 
+        ) : modal === "following" ? (
+          <FollowingModal
             //@ts-ignore
-            setModal = {setModal}
-            user = {user}
-            setUser = {setUser}
+            setModal={setModal}
+            user={user}
+            setUser={setUser}
           />
-
-        ): modal === 'homeSearch' ? (
-
-          <HomeSearchModal 
-          
+        ) : modal === "homeSearch" ? (
+          <HomeSearchModal
             //@ts-ignore
-            setModal = {setModal}
-            user = {user}
-            setUser = {setUser}
-
+            setModal={setModal}
+            user={user}
+            setUser={setUser}
           />
-
-        ): modal === 'photo' ? (
-
-          <PhotoModal 
+        ) : modal === "photo" ? (
+          <PhotoModal
             //@ts-ignore
-            setModal = {setModal}
-            user = {user}
-            setUser = {setUser}
+            setModal={setModal}
+            user={user}
+            setUser={setUser}
           />
+        ) : null
 
-        ):null
-
-      {/* } */}
-
+        /* } */
+      }
     </div>
-
   );
-
 }
 
 export default App;
