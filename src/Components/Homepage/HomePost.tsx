@@ -72,6 +72,7 @@ function HomePost({ photo, user, setPhotos }: any) {
     //@ts-ignore
     const getComment: any = commentsArray.find(
       (comment) =>
+      //@ts-ignore
         comment?.userId === user?.id && comment?.photoId === photo?.id
     );
 

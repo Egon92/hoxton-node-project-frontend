@@ -1,7 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
-* {
-  outline: solid black 1px;
-}
 
 .header-container {
   height: 80px;
