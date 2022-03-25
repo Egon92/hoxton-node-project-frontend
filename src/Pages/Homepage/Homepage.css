@@ -1,17 +1,27 @@
-main.main-home-wrapper {
-    height: auto;
-    width: 100%;
-
-    display: grid;
-    grid-template-rows: 80px 0.9fr 80px;
-    grid-gap: 50px;
+.wrapper {
+  display: grid;
+  background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.678),
+      #fafafa11
+    ),
+    url("https://images.pexels.com/photos/4050401/pexels-photo-4050401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  object-fit: cover;
+}
+.main-home-wrapper {
+  height: auto;
+  width: 100%;
+  backdrop-filter: grayscale(50%);
+  display: grid;
+  grid-template-rows: 80px 0.9fr 80px;
+  grid-gap: 50px;
 }
 
-main.main-home-wrapper .photos {
-    display: grid;
-    grid-template-rows: 1fr;
-    place-items: center;
-    grid-gap: 50px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-} 
+.photos {
+  display: grid;
+  grid-template-rows: 1fr;
+  place-items: center;
+  grid-gap: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}

@@ -2,69 +2,61 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login-Page.css";
 
-function Login({user, setUser, validateUser, setModal}:any) {
-
+function Login({ user, setUser, validateUser, setModal }: any) {
   useEffect(() => {
-    validateUser()
-  }, [])
+    validateUser();
+  }, []);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-
-  function handleEmailChangeSignIn(e:any) {
-      e.preventDefault()
-      const email = e.target.value 
-      setEmail(email)
+  function handleEmailChangeSignIn(e: any) {
+    e.preventDefault();
+    const email = e.target.value;
+    setEmail(email);
   }
 
-  function handlePasswordChangeSignIn(e:any) {
-      e.preventDefault()
-      const password = e.target.value 
-      setPassword(password)
+  function handlePasswordChangeSignIn(e: any) {
+    e.preventDefault();
+    const password = e.target.value;
+    setPassword(password);
   }
 
-  function handleFormSubmitSignIn(e:any) {
+  function handleFormSubmitSignIn(e: any) {
+    e.preventDefault();
 
-      e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-      const email = e.target.email.value
-      const password = e.target.password.value
-      
-      const formData = {
-          email:  email,
-          password: password
-      }
-      
-      fetch('http://localhost:4000/login', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
+    const formData = {
+      email: email,
+      password: password,
+    };
+
+    fetch("http://localhost:4000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-          body: JSON.stringify(formData)
-      })
-      .then(resp => resp.json())
-      .then(data => {
-      
-          if (data.error) {
-              alert(data.error)
-          } 
-          
-          else {
-              // we managed to sign in!
-              localStorage.setItem('token', data.token)
-              setUser(data.user)
-              navigate('/home')
-          }
-
-      })
-
+      body: JSON.stringify(formData),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.error) {
+          alert(data.error);
+        } else {
+          // we managed to sign in!
+          localStorage.setItem("token", data.token);
+          setUser(data.user);
+          navigate("/home");
+        }
+      });
   }
 
   if (user) {
-      navigate("/home")
+    navigate("/home");
   }
 
   return (
@@ -73,24 +65,38 @@ function Login({user, setUser, validateUser, setModal}:any) {
         <img
           id="login-page-img"
           src="https://images.pexels.com/photos/4050401/pexels-photo-4050401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          // src="https://images.pexels.com/photos/1851415/pexels-photo-1851415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
           alt=""
         />
       </div>
       <div className="right-main-wrapper">
-        <form id="login-form" onSubmit={function (e) {
-              handleFormSubmitSignIn(e)
-            }}>
+        <form
+          id="login-form"
+          onSubmit={function (e) {
+            handleFormSubmitSignIn(e);
+          }}
+        >
           <h1>SocialLounge</h1>
           <label htmlFor="">
-            <input type="text" name="email" placeholder="Enter your email" required onChange={function (e) {
-              handleEmailChangeSignIn(e)
-            }}/>
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter your email"
+              required
+              onChange={function (e) {
+                handleEmailChangeSignIn(e);
+              }}
+            />
           </label>
           <label htmlFor="">
-            <input type="text" name="password" placeholder="Enter your password" required onChange={function (e) {
-              handlePasswordChangeSignIn(e)
-            }}/>
+            <input
+              type="text"
+              name="password"
+              placeholder="Enter your password"
+              required
+              onChange={function (e) {
+                handlePasswordChangeSignIn(e);
+              }}
+            />
           </label>
           <label htmlFor="">
             <button>Log In</button>

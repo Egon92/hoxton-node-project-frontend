@@ -1,15 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 footer.footer {
-    height: 80px;
-    width: 100%;
-    display: grid;
-    grid-template-rows: 0.8fr 0.2fr;
-    grid-gap: 20px;
+  height: 80px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 0.8fr 0.2fr;
+  grid-gap: 20px;
 
-    background-color: rgb(246, 129, 129);
+  background-color: #7f4f24;
 }
 
-footer.footer span {
-    font-size: 16px;
-    font-weight: 700;
-    text-align: center;
+.footer span {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  color: whitesmoke;
+  font-family: "Permanent Marker";
 }

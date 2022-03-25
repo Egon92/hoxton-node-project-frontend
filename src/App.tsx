@@ -48,7 +48,7 @@ function App() {
 
       <Routes>
         <Route index element={<Navigate replace to="/login" />} />
-        <Route path="/home" element={<Homepage user = {user} setUser = {setUser} validateUser = {validateUser} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
+        <Route path="/home" element={<Homepage user = {user} setUser = {setUser} modal={modal} validateUser = {validateUser} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
         <Route path="/users/:id" element={<Profile user = {user} setUser = {setUser} validateUser = {validateUser} modal = {modal} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />} />
         <Route path="/login" element={<Login  user = {user} setUser = {setUser} validateUser = {validateUser} />} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
         <Route path="/signup" element={<Signup user = {user} setUser = {setUser} validateUser = {validateUser}/>} setModal = {setModal} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
@@ -56,7 +56,7 @@ function App() {
         <Route path="*" element={<Error404 user = {user} setUser = {setUser} validateUser = {validateUser} />} searchTerm = {searchTerm} />
       </Routes>
 
-        {/* {
+        {
         modal === 'followers' ? (
 
           <FollowerModal 
@@ -95,7 +95,7 @@ function App() {
             setUser = {setUser}
           />
 
-        ):null */}
+        ):null
 
       {/* } */}
 
